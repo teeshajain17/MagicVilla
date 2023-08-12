@@ -20,7 +20,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(
     option =>
     {
         option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultSQLConnection"));
-        ///option.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+        option.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
     }
 );
 
