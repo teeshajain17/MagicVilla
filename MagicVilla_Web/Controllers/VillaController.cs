@@ -44,9 +44,11 @@ namespace MagicVilla_Web.Controllers
                 var response = await _villaService.CreateAsync<APIResponse>(model);
                 if (response != null && response.IsSuccess)
                 {
+                    TempData["success"] = "Villa Created successfully.";
                     return RedirectToAction("IndexVilla");
                 }
             }
+            TempData["error"] = "An Error Occured.";
             return View(model);
         }
 
@@ -57,6 +59,10 @@ namespace MagicVilla_Web.Controllers
             {
                 var model = JsonConvert.DeserializeObject<VillaUpdateDTO>(Convert.ToString(response.Result));
                 return View(model);
+            }
+            else if (response.ErrorMessage.Count > 0)
+            {
+                ModelState.AddModelError("ErrorMessage", response.ErrorMessage.FirstOrDefault());
             }
             return NotFound();
         }
@@ -71,9 +77,15 @@ namespace MagicVilla_Web.Controllers
                 var response = await _villaService.UpdateAsync<APIResponse>(model);
                 if (response != null && response.IsSuccess)
                 {
+                    TempData["success"] = "Villa Updated successfully.";
                     return RedirectToAction("IndexVilla");
                 }
+                else if (response.ErrorMessage.Count > 0)
+                {
+                    ModelState.AddModelError("ErrorMessage", response.ErrorMessage.FirstOrDefault());
+                }
             }
+            TempData["error"] = "An Error Occured.";
             return View(model);
         }
 
@@ -85,6 +97,10 @@ namespace MagicVilla_Web.Controllers
                 var model = JsonConvert.DeserializeObject<VillaDTO>(Convert.ToString(response.Result));
                 return View(model);
             }
+            else if (response.ErrorMessage.Count > 0)
+            {
+                ModelState.AddModelError("ErrorMessage", response.ErrorMessage.FirstOrDefault());
+            }
             return NotFound();
         }
 
@@ -95,9 +111,14 @@ namespace MagicVilla_Web.Controllers
             var response = await _villaService.DeleteAsync<APIResponse>(model.Id);
             if (response != null && response.IsSuccess)
             {
+                TempData["success"] = "Villa Deleted successfully.";
                 return RedirectToAction("IndexVilla");
             }
-
+            else if (response.ErrorMessage.Count > 0)
+            {
+                ModelState.AddModelError("ErrorMessage", response.ErrorMessage.FirstOrDefault());
+            }
+            TempData["error"] = "An Error Occured.";
             return View(model);
         }
 
