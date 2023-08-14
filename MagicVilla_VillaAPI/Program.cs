@@ -44,6 +44,11 @@ builder.Services.AddScoped<IVillaRepository, VillaRepository>();
 builder.Services.AddScoped<IVillaNumberRepository, VillaNumberRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddAutoMapper(typeof(MappingConfig));
+builder.Services.AddResponseCaching();
+builder.Services.AddControllers(option =>
+{
+    option.CacheProfiles.Add("Default30", new CacheProfile { Duration = 30 });
+});
 builder.Services.AddApiVersioning(options =>
 {
     options.AssumeDefaultVersionWhenUnspecified = true;

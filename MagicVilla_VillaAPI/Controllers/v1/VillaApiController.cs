@@ -28,6 +28,7 @@ namespace MagicVilla_VillaAPI.Controllers.v1
             _response = new();
         }
         [HttpGet]
+        [ResponseCache(CacheProfileName ="Default30")]
         public async Task<ActionResult<APIResponse>> GetVillas()
         {
             try
