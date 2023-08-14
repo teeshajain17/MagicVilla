@@ -10,6 +10,7 @@ namespace MagicVilla_VillaAPI.Data
         {
 
         }
+        public DbSet<LocalUser> LocalUsers { get; set; }
         public DbSet<Villa> Villas { get; set; }
         public DbSet<VillaNumber> VillaNumbers { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -43,29 +44,29 @@ namespace MagicVilla_VillaAPI.Data
                   },
                   new Villa
                   {
-                        Id = 3,
-                        Name = "Royal Villa",
-                        Details = "This is Villa 3",
-                        ImageUrl = "",
-                        Sqft = 520,
-                        Rate = 200,
-                        Occupancy = 220,
-                        Amenity = "",
-                        CreatedDate = DateTime.Now,
-                        UpdatedDate = DateTime.MinValue
+                      Id = 3,
+                      Name = "Royal Villa",
+                      Details = "This is Villa 3",
+                      ImageUrl = "",
+                      Sqft = 520,
+                      Rate = 200,
+                      Occupancy = 220,
+                      Amenity = "",
+                      CreatedDate = DateTime.Now,
+                      UpdatedDate = DateTime.MinValue
                   },
                   new Villa
                   {
-                          Id = 4,
-                          Name = "Sea Villa",
-                          Details = "This is Villa 4",
-                          ImageUrl = "",
-                          Sqft = 220,
-                          Rate = 500,
-                          Occupancy = 220,
-                          Amenity = "",
-                          CreatedDate = DateTime.Now,
-                          UpdatedDate = DateTime.MinValue
+                      Id = 4,
+                      Name = "Sea Villa",
+                      Details = "This is Villa 4",
+                      ImageUrl = "",
+                      Sqft = 220,
+                      Rate = 500,
+                      Occupancy = 220,
+                      Amenity = "",
+                      CreatedDate = DateTime.Now,
+                      UpdatedDate = DateTime.MinValue
                   }
             );
         }
