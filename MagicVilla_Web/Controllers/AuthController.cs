@@ -42,7 +42,7 @@ namespace MagicVilla_Web.Controllers
             }
             else
             {
-                ModelState.AddModelError("ErrorMessage", res.ErrorMessage?.FirstOrDefault());
+                ModelState.AddModelError("ErrorMessage", res?.ErrorMessage?.FirstOrDefault());
                 return View(obj);
             }
         }
