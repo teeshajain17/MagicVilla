@@ -1,4 +1,5 @@
-﻿using MagicVilla_Web.Models;
+﻿using MagicVilla_Utilities;
+using MagicVilla_Web.Models;
 using MagicVilla_Web.Models.Dto;
 using MagicVilla_Web.Service.IService;
 using Microsoft.AspNetCore.Mvc;
@@ -19,7 +20,7 @@ namespace MagicVilla_Web.Controllers
         public async Task<IActionResult> Index()
         {
             var list = new List<VillaDTO>();
-            var response = await _villaService.GetAllAsync<APIResponse>();
+            var response = await _villaService.GetAllAsync<APIResponse>(HttpContext?.Session.GetString(SD.SessionToken));
             if (response != null && response.IsSuccess)
             {
                 list = JsonConvert.DeserializeObject<List<VillaDTO>>(Convert.ToString(response.Result));
